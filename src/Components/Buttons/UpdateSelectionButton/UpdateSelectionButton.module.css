@@ -1,0 +1,8 @@
+.button{
+    background-color: hsl(215, 91%, 46%);
+    width: 225px;
+}
+
+.button:hover{
+    background-color: hsl(215, 91%, 36%);
+}

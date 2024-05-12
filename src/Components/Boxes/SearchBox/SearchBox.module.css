@@ -1,0 +1,20 @@
+.container{
+    background-color: rgb(215, 215, 215);
+    color: black;
+    height: 100%;
+}
+
+.table{
+    padding: 10px 30px;
+}
+
+.searchInput{
+    padding: 10px 30px;
+}
+
+.addReactions{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 0px 30px;
+}

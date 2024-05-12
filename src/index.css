@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+button{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    box-shadow: inset -3px -3px 8px hsla(0, 0%, 0%, 0.2);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    transition: background-color 0.5s ease;
+    margin: 15px;
+}

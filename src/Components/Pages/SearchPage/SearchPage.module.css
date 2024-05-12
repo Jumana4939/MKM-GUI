@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    background-color: black;
+    min-height: 900px;
+    width: 100vw;
+}
+
+.search{
+    flex: 70;
+}
+
+.selected{
+    flex: 30;
+}
