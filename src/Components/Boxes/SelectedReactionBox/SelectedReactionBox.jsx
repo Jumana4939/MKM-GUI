@@ -19,16 +19,12 @@ function SelectedReactionBox(){
         setCurrentReaction
     } = useContext(ReactionsContext);
 
-    const [activeSelection, setActiveSelection] = useState(currentReactions);
+    const [activeSelection, setActiveSelection] = useState([]);
 
     const contextValues = {
         activeSelection, 
         setActiveSelection
     };
-
-    useEffect(()=>{
-        setActiveSelection(currentReactions);
-    }, [currentReactions])
 
     return(
         <ActiveReactionsContext.Provider value={contextValues}>

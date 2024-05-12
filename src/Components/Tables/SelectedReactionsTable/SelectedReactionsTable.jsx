@@ -1,5 +1,5 @@
 import styles from "./SelectedReactionsTable.module.css"
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ActiveReactionsContext } from "../../Boxes/SelectedReactionBox/SelectedReactionBox";
 
 function SelectedReactionsTable({data}){
@@ -21,6 +21,10 @@ function SelectedReactionsTable({data}){
             setActiveSelection(prevActiveReactions => [...prevActiveReactions, reaction]);
         }
     }
+
+    useEffect(()=>{
+        console.log("ActiveSelection", activeSelection);
+    }, [activeSelection])
 
     return(
         <div className={styles.container}>

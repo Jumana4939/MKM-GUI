@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import styles from './ClearSelectionButton.module.css';
 
 import { ReactionsContext } from '../../Pages/SearchPage/SearchPage';
+import { ActiveReactionsContext } from '../../Boxes/SelectedReactionBox/SelectedReactionBox';
 
 function ClearSelectionButton(){
 
@@ -12,8 +13,14 @@ function ClearSelectionButton(){
         setCurrentReaction
     } = useContext(ReactionsContext);
 
+    const {
+        ____, 
+        setActiveSelection
+    } = useContext(ActiveReactionsContext);
+
     function handleClearReactions(){
         setCurrentReaction([]);
+        setActiveSelection([]);
     }
 
     return(

@@ -15,11 +15,16 @@ function UpdateSelectionButton(){
 
     const {
         activeSelection, 
-        ____
+        setActiveSelection
     } = useContext(ActiveReactionsContext);
 
-    function handleUpdateSelectionClick(){
-        setCurrentReaction(activeSelection);
+    function handleUpdateSelectionClick() {
+        setCurrentReaction(prevCurrentReactions =>
+            prevCurrentReactions.filter(reaction =>
+                !activeSelection.some(selectedR => selectedR.id === reaction.id)
+            )
+        );
+        setActiveSelection([]);
     }
 
     return(
