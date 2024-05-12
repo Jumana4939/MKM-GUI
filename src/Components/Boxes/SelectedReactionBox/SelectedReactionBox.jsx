@@ -26,9 +26,9 @@ function SelectedReactionBox(){
         setActiveSelection
     };
 
-/*     useEffect(()=>{
+    useEffect(()=>{
         setActiveSelection(currentReactions);
-    }, [currentReactions]) */
+    }, [currentReactions])
 
     return(
         <ActiveReactionsContext.Provider value={contextValues}>
