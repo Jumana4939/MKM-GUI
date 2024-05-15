@@ -1,15 +1,42 @@
-import { useState } from "react";
+import { useState, useContext, useEffect, createContext} from "react";
 import SearchButton from "../../Buttons/SearchButton/SearchButton";
 
 import styles from "./SearchInputBox.module.css"
 
+export const UserParametersContext = createContext();
+
 function SearchInputBox(){
 
-    const [reactant, setReactant] = useState();
-    const [product, setProduct] = useState();
-    const [surface, setSurface] = useState();
-    const [facet, setFacet] = useState();
+    // user input paramters
+    const [reactant, setReactant] = useState("");
+    const [product, setProduct] = useState("");
+    const [surface, setSurface] = useState("");
+    const [facet, setFacet] = useState("");
 
+    const contextValues = {
+        reactant, setReactant,
+        product, setProduct, 
+        surface, setSurface,
+        facet, setFacet
+    };
+
+    function handleReactantChaneg(event){
+        setReactant(event.target.value);
+    }
+
+    function handleProductChange(event){
+        setProduct(event.target.value);
+    }
+
+    function handleSurfaceChange(event){
+        setSurface(event.target.value);
+    }
+
+    function handleFacetChange(event){ 
+        setFacet(event.target.value);
+    }
+
+    //HTML structure code
     return(
         <div className={styles.container}>   
             <div className={styles.inputs}>
@@ -17,7 +44,8 @@ function SearchInputBox(){
                 <div className={styles.box}>
                     <div className={styles.input}>
                         <h2>Reactants</h2>
-                        <input className={styles.inputbox} type="text" placeholder="H"/>
+                        <input className={styles.inputbox} type="text" placeholder="H" 
+                        value={reactant} onChange={handleReactantChaneg}/>
                     </div>
                 </div>
 
@@ -29,30 +57,34 @@ function SearchInputBox(){
                 <div className={styles.box}>
                     <div className={styles.input}>
                         <h2>Product</h2>
-                        <input className={styles.inputbox} type="text" placeholder="CO*"/>
+                        <input className={styles.inputbox} type="text" placeholder="CO*"
+                        value={product} onChange={handleProductChange}/>
                     </div>
                 </div>
 
                 <div className={styles.box}>
                     <div className={styles.input}>
                         <h2>Surface</h2>
-                        <input className={styles.inputbox} type="text" placeholder="Sn"/>
+                        <input className={styles.inputbox} type="text" placeholder="Sn"
+                        value={surface} onChange={handleSurfaceChange}/>
                     </div>
                 </div>
 
                 <div className={styles.box}>
                     <div className={styles.input}>
                         <h2>Facet</h2>
-                        <input className={styles.inputbox} type="text" placeholder="H"/>
+                        <input className={styles.inputbox} type="text" placeholder="H"
+                        value={facet} onChange={handleFacetChange}/>
                     </div>
                 </div>
 
-
             </div>
 
-            <div className={styles.button}>
-                <SearchButton/>
-            </div>
+            <UserParametersContext.Provider value={contextValues}>
+                <div className={styles.button}>
+                    <SearchButton/>
+                </div>
+            </UserParametersContext.Provider>
         </div>
     );
 }

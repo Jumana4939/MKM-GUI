@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from "react";
 import styles from "./SearchResultsTable.module.css"
 import { ReactionsContext } from "../../Pages/SearchPage/SearchPage";
+import { DatabaseContext } from "../../Boxes/SearchBox/SearchBox";
 
-function SearchResultsTable({data}){
+function SearchResultsTable(){
 
-    //const [selectedReactions, setSelectedReactions] = useState([]);
+    //importing data from other components 
     const {
         selectedReactions,
         setSelectedReactions, 
@@ -12,6 +13,11 @@ function SearchResultsTable({data}){
         __
     } = useContext(ReactionsContext);
 
+    const {
+        reactionsDB, ___
+    } = useContext(DatabaseContext);
+
+    //check box handling, adding selected reactions to list for add reactions buttons to use.
     function handleCheckboxChange(reaction){
         //check if the reaction is already selected
         const isSelected = selectedReactions.some(selectedR => selectedR.id === reaction.id);
@@ -25,6 +31,7 @@ function SearchResultsTable({data}){
 
     }
 
+    //HTML structure code
     return(
         <div className={styles.container}>
         <table className={styles.table}>
@@ -39,7 +46,7 @@ function SearchResultsTable({data}){
             </thead>
 
             <tbody>
-                {data.map((reaction) => (
+                {reactionsDB.map((reaction) => (
                     <tr key={reaction.id} className={styles.rows}>
                         <td className={styles.rowSelect}><input type="checkbox"
                             onChange={() => handleCheckboxChange(reaction)}
