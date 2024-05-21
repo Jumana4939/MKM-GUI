@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import styles from "./SearchResultsTable.module.css"
 import { ReactionsContext } from "../../Pages/SearchPage/SearchPage";
 import { DatabaseContext } from "../../Boxes/SearchBox/SearchBox";
+import { TableControlsContext } from "../../Boxes/SearchBox/SearchBox";
 
 function SearchResultsTable(){
 
@@ -17,6 +18,11 @@ function SearchResultsTable(){
         reactionsDB, ___
     } = useContext(DatabaseContext);
 
+    const {
+        page, setPage,
+        totalPages, ____
+    } = useContext(TableControlsContext);
+
     //check box handling, adding selected reactions to list for add reactions buttons to use.
     function handleCheckboxChange(reaction){
         //check if the reaction is already selected
@@ -31,8 +37,21 @@ function SearchResultsTable(){
 
     }
 
+    const handlePrevPage = () => {
+        if (page > 1){
+            setPage(page-1);
+        }
+    };
+
+    const handleNextPage = () => {
+        if(page < totalPages) {
+            setPage(page+1);
+        }
+    };
+
     //HTML structure code
     return(
+        <>
         <div className={styles.container}>
         <table className={styles.table}>
             <thead className={styles.headers}>
@@ -65,6 +84,19 @@ function SearchResultsTable(){
             </tbody>
         </table>
     </div>
+    
+    <div className={styles.controls}>
+            <button className={styles.controlsButtons}
+                onClick={handlePrevPage} disabled={page === 1}
+            >&#8592;</button>
+
+            <span> {page}/{totalPages} </span>
+
+            <button className={styles.controlsButtons}
+                onClick={handleNextPage} disabled={page === totalPages}
+            >&#8594;</button>
+    </div>
+    </>
     );
 }
 

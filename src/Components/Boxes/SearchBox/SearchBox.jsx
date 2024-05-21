@@ -6,6 +6,7 @@ import React, {useState, useEffect, createContext} from "react";
 import styles from './SearchBox.module.css'
 
 export const DatabaseContext = createContext();
+export const TableControlsContext = createContext(); 
 
 function SearchBox(){
 
@@ -15,8 +16,18 @@ function SearchBox(){
         reactionsDB, setReactionsDB
     };
 
+    //table controls variable
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
+    const controlContextValues = {
+        page, setPage,
+        totalPages, setTotalPages
+    };
+
     return(
         <DatabaseContext.Provider value={contextValue}> 
+        <TableControlsContext.Provider value={controlContextValues}>
             <div className={styles.container}>
                 <div className={styles.searchInput}>
                     <SearchInputBox/>
@@ -32,6 +43,7 @@ function SearchBox(){
                 </div>
 
             </div>
+            </TableControlsContext.Provider>
         </DatabaseContext.Provider> 
     );
 }
