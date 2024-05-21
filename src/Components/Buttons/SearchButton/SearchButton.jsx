@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import styles from './SearchButton.module.css';
 
 import { DatabaseContext } from '../../Boxes/SearchBox/SearchBox';
@@ -24,6 +24,12 @@ function SearchButton(){
         page, setPage,
         totalPages, setTotalPages
     } = useContext(TableControlsContext);
+    
+    // storing query results parameters for nativagtion of table pages 
+    const [resultsReactant, setResultsReactant] = useState("");
+    const [resultsProduct, setResultsProduct] = useState("");
+    const [resultsSurface, setResultsSurface] = useState("");
+    const [resultsFacet, setResultsFacet] = useState("");
 
     // HANDLE FETCHING DATA FROM BACKEND 
     //Fetch basic data on first mount 
@@ -33,7 +39,7 @@ function SearchButton(){
     }, []);
 
     useEffect(() => {
-        queryData();
+        queryDataPageChange();
     }, [page]);
 
     useEffect(() => {
@@ -76,17 +82,50 @@ function SearchButton(){
         }
     };
 
+    const queryDataPageChange = async () => {
+        try {
+            const queryParams = new URLSearchParams({
+                reactants: resultsReactant,
+                products: resultsProduct,
+                surfaces: resultsSurface,
+                facets: resultsFacet,
+                page: page
+            });
+    
+            const response = await fetch(`http://127.0.0.1:5000/query?${queryParams}`);
+            if(!response.ok) {
+                throw new Error(`Network response was not ok`);
+            }
+    
+            const jsonData = await response.json();
+            setReactionsDB(jsonData);
+        } catch (error) {
+            console.error(`Error fetching data: `, error);
+        }
+    };
+
+
     function handleSearchClick(){
         //only if inputs are NOT empty
-        if(reactant || product || surface || facet){
+        if((reactant || product || surface || facet) || 
+        (resultsProduct || resultsProduct || resultsSurface || resultsFacet)){
             //Fetched queried data from backend
             queryData();
+
+            // Store quary paramets
+            setResultsReactant(reactant);
+            setResultsProduct(product);
+            setResultsSurface(surface);
+            setResultsFacet(facet);
 
             // Reset inputs
             setReactant("");
             setProduct("");
             setSurface("");
             setFacet("");
+
+            //Reset page number
+            setPage(1);
         }
     };
 
