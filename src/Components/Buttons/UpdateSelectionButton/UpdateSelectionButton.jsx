@@ -1,17 +1,15 @@
 import styles from './UpdateSelectionButton.module.css'
 import { useContext } from 'react';
 
-import { ReactionsContext } from '../../Pages/SearchPage/SearchPage';
 import { ActiveReactionsContext } from '../../Boxes/SelectedReactionBox/SelectedReactionBox';
+import { InputReactionsContext } from '../../../App';
 
 function UpdateSelectionButton(){
 
     const {
-        _,
-        __, 
-        ___, 
-        setCurrentReaction
-    } = useContext(ReactionsContext);
+        _, 
+        setInputReaction
+    } = useContext(InputReactionsContext);
 
     const {
         activeSelection, 
@@ -19,7 +17,7 @@ function UpdateSelectionButton(){
     } = useContext(ActiveReactionsContext);
 
     function handleUpdateSelectionClick() {
-        setCurrentReaction(prevCurrentReactions =>
+        setInputReaction(prevCurrentReactions =>
             prevCurrentReactions.filter(reaction =>
                 !activeSelection.some(selectedR => selectedR.id === reaction.id)
             )

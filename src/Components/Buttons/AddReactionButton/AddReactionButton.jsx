@@ -1,6 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import styles from './AddReactionButton.module.css';
 import { ReactionsContext } from '../../Pages/SearchPage/SearchPage';
+import { InputReactionsContext } from '../../../App';
 
 function AddReactionButton(){
 
@@ -11,10 +12,15 @@ function AddReactionButton(){
         setCurrentReaction
     } = useContext(ReactionsContext);
 
+    const {
+        inputReactions, 
+        setInputReaction
+    } = useContext(InputReactionsContext);
+
     function handleAddReaction(){
 
         const uniqueReactions = selectedReactions.filter(reaction => {
-            if (currentReactions.some(item => item.id === reaction.id)){
+            if (inputReactions.some(item => item.id === reaction.id)){
                 console.log(`Dulplicate object with id ${reaction.id} found.`);
                 return false; 
             } else {
@@ -22,13 +28,13 @@ function AddReactionButton(){
             }
         });
 
-        setCurrentReaction(c => [...c, ...uniqueReactions])
+        setInputReaction(c => [...c, ...uniqueReactions])
         setSelectedReactions(s => []);
     };
 
     useEffect(() => {
-        console.log("Current Reactions", currentReactions);
-    }, [currentReactions])
+        console.log("Current Reactions", inputReactions);
+    }, [inputReactions])
 
 
     return(

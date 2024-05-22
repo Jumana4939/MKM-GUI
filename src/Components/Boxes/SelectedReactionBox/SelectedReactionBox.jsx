@@ -6,18 +6,10 @@ import SelectedReactionsTable from "../../Tables/SelectedReactionsTable/Selected
 import styles from "./SelectedReactionBox.module.css"
 
 import { useContext, createContext, useState, useEffect } from "react";
-import { ReactionsContext } from "../../Pages/SearchPage/SearchPage";
 
 export const ActiveReactionsContext = createContext();
 
 function SelectedReactionBox(){
-
-    const {
-        _,
-        __, 
-        currentReactions, 
-        setCurrentReaction
-    } = useContext(ReactionsContext);
 
     const [activeSelection, setActiveSelection] = useState([]);
 
@@ -32,7 +24,7 @@ function SelectedReactionBox(){
                 <h2 className={styles.title}>Selected Reactions</h2>
 
                 <div className={styles.table}>
-                    <SelectedReactionsTable data={currentReactions}/>
+                    <SelectedReactionsTable/>
                 </div>
 
                 <div className={styles.buttons}>

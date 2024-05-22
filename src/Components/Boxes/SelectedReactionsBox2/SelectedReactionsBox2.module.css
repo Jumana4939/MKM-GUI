@@ -2,6 +2,22 @@
     background-color: rgb(215, 215, 215);
     color: black;
     height: 100%;
+    padding: 25px;
+}
+
+/* Titles styling */
+.mainTitle{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.subTitle{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    margin: 0;
+    padding: 10px 0;
 }
 
 /* Table styling */
@@ -54,4 +70,54 @@
 
 .rowSelect{
     transform: scale(1.25);
+}
+
+/* Button styling */
+.tableButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.otherButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.updateButton{
+    background-color: hsl(215, 91%, 46%);
+    width: 225px;
+}
+
+.updateButton:hover{
+    background-color: hsl(215, 91%, 36%);
+}
+
+.clearButton{
+    background-color: hsl(4, 93%, 48%);
+    width: 225px;
+}
+
+.clearButton:hover{
+    background-color: hsl(4, 93%, 38%);
+}
+
+.backButton{
+    background-color: hsl(0, 0%, 75%);
+    width: 300px;
+    color: hsl(0, 0%, 32%);
+}
+
+.backButton:hover{
+    background-color: hsl(0, 0%, 65%);
+}
+
+.editButton{
+    background-color: hsl(0, 0%, 55%);
+    width: 300px;
+}
+
+.editButton:hover{
+    background-color: hsl(0, 0%, 45%);
 }

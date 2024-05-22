@@ -13,10 +13,10 @@ export const ReactionsContext = createContext();
 function SearchPage(){
 
     const [selectedReactions, setSelectedReactions] = useState([]);
-/*     const {
+    const {
         currentReactions, setCurrentReaction
-    } = useContext(InputReactionsContext);  */
-    const [currentReactions, setCurrentReaction] = useState([]);
+    } = useContext(InputReactionsContext); 
+    //const [currentReactions, setCurrentReaction] = useState([]);
 
     const contextValue = {
         selectedReactions,

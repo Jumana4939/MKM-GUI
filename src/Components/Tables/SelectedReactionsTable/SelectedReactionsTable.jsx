@@ -1,13 +1,19 @@
 import styles from "./SelectedReactionsTable.module.css"
 import { useContext, useEffect } from "react";
 import { ActiveReactionsContext } from "../../Boxes/SelectedReactionBox/SelectedReactionBox";
+import { InputReactionsContext } from "../../../App";
 
-function SelectedReactionsTable({data}){
+function SelectedReactionsTable(){
 
     const {
         activeSelection, 
         setActiveSelection
     } = useContext(ActiveReactionsContext);
+
+    const {
+        inputReactions, 
+        setInputReaction
+    } = useContext(InputReactionsContext);
 
 
     function handleCheckboxChange(reaction){
@@ -38,7 +44,7 @@ function SelectedReactionsTable({data}){
                 </thead>
 
                 <tbody>
-                    {data.map((reaction) => (
+                    {inputReactions.map((reaction) => (
                         <tr key={reaction.id} className={styles.rows}>
                             <td className={styles.rowSelect}>
                                 <input type="checkbox" 
