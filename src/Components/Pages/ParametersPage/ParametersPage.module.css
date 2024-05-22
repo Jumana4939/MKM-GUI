@@ -12,10 +12,10 @@
     width: 100vw;
 }
 
-.search{
+.selectedBox{
     flex: 70;
 }
 
-.selected{
+.conditionsBox{
     flex: 30;
 }

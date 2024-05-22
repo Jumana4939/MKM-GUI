@@ -5,13 +5,17 @@ import Footer from "../../Footer/Footer";
 
 import styles from "./SearchPage.module.css"
 
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
+import { InputReactionsContext } from "../../../App";
 
 export const ReactionsContext = createContext();
 
 function SearchPage(){
 
     const [selectedReactions, setSelectedReactions] = useState([]);
+/*     const {
+        currentReactions, setCurrentReaction
+    } = useContext(InputReactionsContext);  */
     const [currentReactions, setCurrentReaction] = useState([]);
 
     const contextValue = {
@@ -23,6 +27,7 @@ function SearchPage(){
 
     return(
         <>
+        <div className={styles.page}>
             <Header />
 
             <ReactionsContext.Provider value={contextValue}>
@@ -38,7 +43,7 @@ function SearchPage(){
             </ReactionsContext.Provider>
 
             <Footer/>
-  
+        </div>
         </>
     );
 }
