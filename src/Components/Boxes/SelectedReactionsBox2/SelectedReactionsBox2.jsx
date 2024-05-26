@@ -1,27 +1,81 @@
-import React, {useState, useContext}from "react";
+import React, {useState, useContext, useEffect}from "react";
 
 import styles from "./SelectedReactionsBox2.module.css";
 import { InputReactionsContext } from "../../../App";
+import { CurrentViewContext } from "../../../App";
 
 function SelectedReactionsBox2(){
 
     const [activeSelection, setActiveSelection] = useState([]);
+    const [unselectedReactions, setUnselectedReactions] = useState([]);
+    const [reselectReaction, setReselectReaction] = useState([]);
+
+    useEffect(()=> {
+        console.log("reselectReaction:", reselectReaction);
+    }, [reselectReaction]);
+
+    useEffect(()=> {
+        console.log("unselectedReactions:", unselectedReactions);
+    }, [unselectedReactions]);
 
     const {
         inputReactions, 
         setInputReaction
     } = useContext(InputReactionsContext);
 
-    function handleCheckboxChange(reaction){
-        //check if the reaction is already selected
+    const {
+        currentView, setCurrentView
+    } = useContext(CurrentViewContext);
+
+    function handleCheckboxChangeInSelected(reaction) {
         const isSelected = activeSelection.some(selectedR => selectedR.id === reaction.id);
 
-        if(isSelected){
-            //if its already selected, remove it from the list
+        if (isSelected) {
             setActiveSelection(prevActiveReactions => prevActiveReactions.filter(selectedR => selectedR.id !== reaction.id));
         } else {
             setActiveSelection(prevActiveReactions => [...prevActiveReactions, reaction]);
         }
+    }
+
+    function handleCheckboxChangeInUnselected(reaction) {
+        const isSelected = reselectReaction.some(reselectR => reselectR.id === reaction.id);
+        if (isSelected) {
+            setReselectReaction(prevReselectReactions => prevReselectReactions.filter(reselectR => reselectR.id !== reaction.id));
+        } else {
+            setReselectReaction(prevReselectReactions => [...prevReselectReactions, reaction]);
+        }
+    }
+
+    function handleUpdateSelection() {
+        const updatedInputReactions = [
+            ...inputReactions.filter(reaction => !activeSelection.some(selectedR => selectedR.id === reaction.id)),
+            ...reselectReaction.filter(reaction => !inputReactions.some(inputR => inputR.id === reaction.id))
+        ];
+        const updatedUnselectedReactions = [
+            ...unselectedReactions.filter(reaction => !reselectReaction.some(reselectR => reselectR.id === reaction.id)),
+            ...activeSelection.filter(reaction => !unselectedReactions.some(unselectedR => unselectedR.id === reaction.id))
+        ];
+
+        setInputReaction(updatedInputReactions);
+        setUnselectedReactions(updatedUnselectedReactions);
+        setActiveSelection([]);
+        setReselectReaction([]);
+    }
+
+    function handleClearSelection() {
+        const newUnselectedReactions = [
+            ...unselectedReactions,
+            ...inputReactions.filter(reaction => !unselectedReactions.some(unselectedR => unselectedR.id === reaction.id))
+        ];
+
+        setInputReaction([]);
+        setUnselectedReactions(newUnselectedReactions);
+        setActiveSelection([]);
+        setReselectReaction([]);
+    }
+
+    function handleBackButton(){
+        setCurrentView("searchPage");
     }
 
 
@@ -48,7 +102,7 @@ function SelectedReactionsBox2(){
                                 <td className={styles.rowSelect}>
                                     <input type="checkbox" 
                                             defaultChecked={true}
-                                            onChange={() => handleCheckboxChange(reaction)}/>
+                                            onChange={() => handleCheckboxChangeInSelected(reaction)}/>
                                 </td>
                                 <td className={styles.rowReaction}>{reaction.Equation}</td>
                                 <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
@@ -73,12 +127,12 @@ function SelectedReactionsBox2(){
                     </thead>
 
                     <tbody>
-                        {inputReactions.map((reaction) => (
+                        {unselectedReactions.map((reaction) => (
                             <tr key={reaction.id} className={styles.rows}>
                                 <td className={styles.rowSelect}>
                                     <input type="checkbox" 
-                                            defaultChecked={true}
-                                            onChange={() => handleCheckboxChange(reaction)}/>
+                                            defaultChecked={false}
+                                            onChange={() => handleCheckboxChangeInUnselected(reaction)}/>
                                 </td>
                                 <td className={styles.rowReaction}>{reaction.Equation}</td>
                                 <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
@@ -91,17 +145,17 @@ function SelectedReactionsBox2(){
             {/* update table buttons*/}
             <div className={styles.tableButtons}>
                 <div>
-                    <button className={styles.updateButton}>Update Selection</button>
+                    <button onClick={handleUpdateSelection} className={styles.updateButton}>Update Selection</button>
                 </div>
                 <div>
-                    <button className={styles.clearButton}>Clear Selection</button>
+                    <button onClick={handleClearSelection} className={styles.clearButton}>Clear Selection</button>
                 </div>
             </div>
 
             {/* Other buttons*/}
             <div className={styles.otherButtons}>
                 <div>
-                    <button className={styles.backButton}>&#8592; Back to Search</button>
+                    <button onClick={handleBackButton} className={styles.backButton}>&#8592; Back to Search</button>
                 </div>
                 <div>
                     <button className={styles.editButton}>Edit Energy Values</button>
