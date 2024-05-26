@@ -9,7 +9,7 @@
     display: flex;
     background-color: black;
     min-height: 900px;
-    width: 100vw;
+    width: 100%;
 }
 
 .selectedBox{

@@ -5,21 +5,23 @@
     padding: 25px;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Titles styling */
 .mainTitle{
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
     margin: 0;
-    padding: 10px 0;
+    padding: 10px 0 5px 15px;
 }
 
 .subTitle{
     font-family: Arial, Helvetica, sans-serif;
     text-align: left;
     margin: 0;
-    padding: 10px 0;
+    padding: 10px 0 5px 15px;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Table styling */
 .tableContainer{
     display: flex;
@@ -53,25 +55,23 @@
 
 .rows td{
     padding:15px;
+    text-align: center;
 }
 
 .headerReaction{
     text-align: left;
 }
 
-
-.rowSelect{
-    text-align: center;
-}
-
-.rowSurface{
-    text-align: center;
+.rows td.rowReaction{
+    text-align: left;
 }
 
 .rowSelect{
-    transform: scale(1.25);
+    transform: scale(1.35);
+    text-align: center;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Button styling */
 .tableButtons{
     display: flex;

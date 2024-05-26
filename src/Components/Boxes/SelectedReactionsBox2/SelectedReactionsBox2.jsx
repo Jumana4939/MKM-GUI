@@ -93,6 +93,8 @@ function SelectedReactionsBox2(){
                             <th className={styles.headerSelect}>Select</th>
                             <th className={styles.headerReaction}>Reaction</th>
                             <th className={styles.headerSurface}>Surface</th>
+                            <th className={styles.headerActivationEnergy}>Activation Energy</th>
+                            <th className={styles.headerReactionEnergy}>Reaction Energy</th>
                         </tr>
                     </thead>
 
@@ -106,6 +108,12 @@ function SelectedReactionsBox2(){
                                 </td>
                                 <td className={styles.rowReaction}>{reaction.Equation}</td>
                                 <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
+                                <td className={styles.rowActivationEnergy}>
+                                    {reaction.activationEnergy ? reaction.activationEnergy.toFixed(2) : `NA`}
+                                </td>
+                                <td className={styles.rowReactionEnergy}>
+                                    {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) : `NA`}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -123,6 +131,8 @@ function SelectedReactionsBox2(){
                             <th className={styles.headerSelect}>Select</th>
                             <th className={styles.headerReaction}>Reaction</th>
                             <th className={styles.headerSurface}>Surface</th>
+                            <th className={styles.headerActivationEnergy}>Activation Energy</th>
+                            <th className={styles.headerReactionEnergy}>Reaction Energy</th>
                         </tr>
                     </thead>
 
@@ -136,6 +146,12 @@ function SelectedReactionsBox2(){
                                 </td>
                                 <td className={styles.rowReaction}>{reaction.Equation}</td>
                                 <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
+                                <td className={styles.rowActivationEnergy}>
+                                    {reaction.activationEnergy ? reaction.activationEnergy.toFixed(2) : `NA`}
+                                </td>
+                                <td className={styles.rowReactionEnergy}>
+                                    {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) : `NA`}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
