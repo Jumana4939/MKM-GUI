@@ -3,3 +3,149 @@
     color: black;
     height: 100%;
 }
+
+/* ------------------------------------------------------------------------- */
+/* Titles styling */
+.concentrationsTitle{
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.conditionsTitle{
+    text-align: center;
+    padding: 10px 0;
+    margin: 0;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Concentrations styling */
+.concentrationsContainer{
+    min-height: 300px;
+    padding: 50px 0;
+}
+.concentrationsBoxInputs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px 60px;
+    align-items: flex-start;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.concentrationPair{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 250px;
+    padding: 10px 0;
+}
+
+.concentrationLabel{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    width: 50px;
+}
+
+.concentrationInput{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    width: 75px;
+    text-align: center;
+    border: 3px solid rgb(133, 133, 133);
+}
+
+.concentrationInput:hover{
+    outline: none;
+    border: 3px solid rgb(70, 70, 70);
+}
+
+/*remove controls from input boxes*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Simulation Conditions styling */
+.conditionsContainer{
+    padding-bottom: 50px;
+}
+
+.inputsBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 40px;
+}
+.conditionLabel{
+    width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+}
+
+.conditionsRow{
+    display: flex;
+    align-items: left;
+    gap: 10px; /* Space between elements */
+    width: 600px;
+    padding: 10px 0;
+}
+
+.conditionInput{
+    width: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    border: 3px solid rgb(133, 133, 133);
+}
+
+.conditionInput:hover{
+    outline: none;
+    border: 3px solid rgb(70, 70, 70);
+}
+
+.conditionPrefix{
+    width: 50px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+}
+
+.warningMessage{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    color: rgb(205, 2, 2);
+    font-weight: bold;
+    text-align: center;
+}
+/* ------------------------------------------------------------------------- */
+/* Button styling */
+.buttonsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.resetButton{
+    background-color: hsl(4, 93%, 48%);
+    width: 150px;
+}
+
+.resetButton:hover{
+    background-color: hsl(4, 93%, 38%);
+}
+
+.runButton{
+    background-color: hsl(120, 90%, 35%);
+    width: 350px;
+}
+
+.runButton:hover{
+    background-color: hsl(120, 90%, 30%);
+}
