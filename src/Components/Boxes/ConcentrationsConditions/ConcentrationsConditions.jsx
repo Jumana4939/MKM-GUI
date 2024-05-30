@@ -61,6 +61,45 @@ function ConcentrationsConditions(){
         setEmptyInputWarning(hasEmptyInput);
     }, [concentrationValues]);
 
+    function createUserInput(){
+        const userInputs = {"initial_concentrations":{"FeCO*":"1"},
+        "reaction_ids":["1"],
+        "initial_conditions":{"min_temperature": 300, "max_temperature": 1100, "time": "10e5", "atol": "1e-8", "rtol": "1e-8"},
+        "pressure": "1"};
+        console.log("USER INPUT CREATED");
+        return(userInputs);
+    }
+
+    // Connect to backend to generate Input_SAC.mkm file and download
+    const handleGenerateFileButton = async () => {
+        const userInputs = createUserInput();
+        console.log("BUTTON PRESSED");
+        try {
+            const response = await fetch('http://127.0.0.1:5000/generate-input-file', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(userInputs),
+            });
+        
+            if (response.ok) {
+              const blob = await response.blob();
+              const url = window.URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'Input_SAC.mkm';
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+            } else {
+              console.error('Failed to generate file', response.statusText);
+            }
+          } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
     return(
         <>
             <div className={styles.container}>
@@ -143,7 +182,7 @@ function ConcentrationsConditions(){
                         <button className={styles.resetButton} onClick={handleResetButton}>Reset</button>
                     </div>
                     <div>
-                        <button className={styles.runButton}>Run Model</button>
+                        <button className={styles.runButton} onClick={handleGenerateFileButton}>Generate File</button>
                     </div>
                 </div>
             </div>
