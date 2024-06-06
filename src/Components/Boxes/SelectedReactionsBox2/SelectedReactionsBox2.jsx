@@ -10,14 +10,6 @@ function SelectedReactionsBox2(){
     const [unselectedReactions, setUnselectedReactions] = useState([]);
     const [reselectReaction, setReselectReaction] = useState([]);
 
-    useEffect(()=> {
-        console.log("reselectReaction:", reselectReaction);
-    }, [reselectReaction]);
-
-    useEffect(()=> {
-        console.log("unselectedReactions:", unselectedReactions);
-    }, [unselectedReactions]);
-
     const {
         inputReactions, 
         setInputReaction
