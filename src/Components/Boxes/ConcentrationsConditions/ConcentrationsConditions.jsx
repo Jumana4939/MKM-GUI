@@ -40,15 +40,13 @@ function ConcentrationsConditions(){
     }
     
     const [concentrationValues, setConcentrationValues] = useState({
-        "C": 0, 
-        "O": 0, 
-        "*": 1
+        "FeCO*":"1"
     });
 
     const handleInputChange = (key, value) => {
         setConcentrationValues(prevValues => ({
             ...prevValues,
-            [key]: parseFloat(value)
+            [key]: value.toString()
         }));
     };
 
@@ -62,18 +60,24 @@ function ConcentrationsConditions(){
     }, [concentrationValues]);
 
     function createUserInput(){
-        const userInputs = {"initial_concentrations":{"FeCO*":"1"},
+        const userInputs = {"initial_concentrations":concentrationValues,
         "reaction_ids":["1"],
-        "initial_conditions":{"min_temperature": 300, "max_temperature": 1100, "time": "10e5", "atol": "1e-8", "rtol": "1e-8"},
-        "pressure": "1"};
-        console.log("USER INPUT CREATED");
+        "initial_conditions":{"min_temperature": temperatureMin, 
+            "max_temperature": temperatureMax, 
+            "time": `${duration}e${durationExponent}`, 
+            "atol": `${absoluteTolerance}e${absoluteToleranceExponent}`, 
+            "rtol": `${relativeTolerance}e${relativeToleranceExponent}`
+        },
+        "pressure": pressure.toString()};
+
+        console.log("userInputs:",userInputs);
         return(userInputs);
     }
 
     // Connect to backend to generate Input_SAC.mkm file and download
     const handleGenerateFileButton = async () => {
         const userInputs = createUserInput();
-        console.log("BUTTON PRESSED");
+
         try {
             const response = await fetch('http://127.0.0.1:5000/generate-input-file', {
               method: 'POST',

@@ -39,6 +39,10 @@
     text-align: left;
 }
 
+.aiSciaData{
+    color:blue;
+}
+
 .rowSelect{
     transform: scale(1.35);
 }

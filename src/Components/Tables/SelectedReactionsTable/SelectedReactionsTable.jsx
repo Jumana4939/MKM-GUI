@@ -45,7 +45,7 @@ function SelectedReactionsTable(){
 
                 <tbody>
                     {inputReactions.map((reaction) => (
-                        <tr key={reaction.id} className={styles.rows}>
+                        <tr key={reaction.id} className={`${styles.rows} ${reaction.dataSource === "AiScia" ? styles.aiSciaData: ""}`}>
                             <td className={styles.rowSelect}>
                                 <input type="checkbox" 
                                         defaultChecked={true}

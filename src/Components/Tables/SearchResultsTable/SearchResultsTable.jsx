@@ -66,7 +66,8 @@ function SearchResultsTable(){
 
             <tbody>
                 {reactionsDB.map((reaction) => (
-                    <tr key={reaction.id} className={styles.rows}>
+                    <tr key={reaction.id} 
+                    className={`${styles.rows} ${reaction.dataSource === "AiScia" ? styles.aiSciaData: ""}`}>
                         <td className={styles.rowSelect}><input type="checkbox"
                             onChange={() => handleCheckboxChange(reaction)}
                             checked={selectedReactions.some(selectedR => selectedR.id === reaction.id)}/>
