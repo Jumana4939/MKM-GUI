@@ -1,7 +1,14 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext} from "react";
 import styles from "./ConcentrationsConditions.module.css";
 
+import { InputReactionsContext } from "../../../App";
+
 function ConcentrationsConditions(){
+
+    const {
+        inputReactions, 
+        _
+    } = useContext(InputReactionsContext);
 
     //simulation conditions values
     const defaultConditionValues = {
@@ -61,7 +68,7 @@ function ConcentrationsConditions(){
 
     function createUserInput(){
         const userInputs = {"initial_concentrations":concentrationValues,
-        "reaction_ids":["1"],
+        "reactions_data":inputReactions,
         "initial_conditions":{"min_temperature": temperatureMin, 
             "max_temperature": temperatureMax, 
             "time": `${duration}e${durationExponent}`, 
