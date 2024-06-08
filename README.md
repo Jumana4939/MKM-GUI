@@ -1,2 +1,2 @@
-# MultiKenitics Modelling GUI
+# MicroKenitics Modelling GUI
 
