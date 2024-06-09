@@ -6,7 +6,7 @@ function Header(){
         <>
             <div className={styles.container}>
                 <img src={logo} alt="AiScia Logo" />
-                <h1 className={styles.title}>Multikinetics Modelling</h1>
+                <h1 className={styles.title}>MicroKinetics Modelling</h1>
             </div>
         </>
     );

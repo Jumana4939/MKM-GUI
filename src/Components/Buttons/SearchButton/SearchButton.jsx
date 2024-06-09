@@ -108,7 +108,7 @@ function SearchButton(){
     function handleSearchClick(){
         //only if inputs are NOT empty
         if((reactant || product || surface || facet) || 
-        (resultsProduct || resultsProduct || resultsSurface || resultsFacet)){
+        (resultsReactant || resultsProduct || resultsSurface || resultsFacet)){
             //Fetched queried data from backend
             queryData();
 

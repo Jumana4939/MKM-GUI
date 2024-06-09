@@ -70,8 +70,6 @@ function ConcentrationsConditions(){
             }
         });
 
-        console.log("uniqueConcentractions: ", uniqueConcentractions);
-
         // ADD CODE HERE
         const newConcentrationValues = {};
 
@@ -153,9 +151,7 @@ function ConcentrationsConditions(){
 
     // Update concentration keys every time list of reaction to be used is updated
     useEffect(() => {
-        console.log("Helloooo")
         concentrationKeyGeneration();
-        console.log("Bye")
     }, [inputReactions]);
 
     const handleInputChange = (key, value) => {
