@@ -44,7 +44,7 @@ function SearchInputBox(){
                 <div className={styles.box}>
                     <div className={styles.input}>
                         <h2>Reactants</h2>
-                        <input className={styles.inputbox} type="text" placeholder="H" 
+                        <input className={styles.inputbox} type="text" placeholder="e.g H" 
                         value={reactant} onChange={handleReactantChaneg}/>
                     </div>
                 </div>
@@ -57,7 +57,7 @@ function SearchInputBox(){
                 <div className={styles.box}>
                     <div className={styles.input}>
                         <h2>Product</h2>
-                        <input className={styles.inputbox} type="text" placeholder="CO*"
+                        <input className={styles.inputbox} type="text" placeholder="e.g CO*"
                         value={product} onChange={handleProductChange}/>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ function SearchInputBox(){
                 <div className={styles.box}>
                     <div className={styles.input}>
                         <h2>Surface</h2>
-                        <input className={styles.inputbox} type="text" placeholder="Sn"
+                        <input className={styles.inputbox} type="text" placeholder="e.g Sn"
                         value={surface} onChange={handleSurfaceChange}/>
                     </div>
                 </div>
@@ -73,7 +73,7 @@ function SearchInputBox(){
                 <div className={styles.box}>
                     <div className={styles.input}>
                         <h2>Facet</h2>
-                        <input className={styles.inputbox} type="text" placeholder="H"
+                        <input className={styles.inputbox} type="text" placeholder="e.g 111"
                         value={facet} onChange={handleFacetChange}/>
                     </div>
                 </div>

@@ -49,8 +49,8 @@ function SearchButton(){
     const queryData = async () => {
         try {
             const queryParams = new URLSearchParams({
-                reactants: reactant,
-                products: product,
+                reactants: reactant.replace("*","star"),
+                products: product.replace("*","star"),
                 surfaces: surface,
                 facets: facet,
                 page: page

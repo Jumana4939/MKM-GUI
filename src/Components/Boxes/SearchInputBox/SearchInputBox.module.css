@@ -1,6 +1,6 @@
 .container{
     display: flex;
-    justify-content: cent;
+    justify-content: center;
     align-items: center;
     text-align: center;
     height: 175px;
@@ -38,6 +38,11 @@
 .inputbox:focus{
     outline: none;
     border: 5px solid rgb(70, 70, 70);
+}
+
+.inputbox::placeholder{
+    font-size: 1.1rem;
+    font-style: italic;
 }
 
 .arrow {
