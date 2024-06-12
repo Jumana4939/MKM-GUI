@@ -119,10 +119,10 @@ function SearchButton(){
             setResultsFacet(facet);
 
             // Reset inputs
-            setReactant("");
+            /* setReactant("");
             setProduct("");
             setSurface("");
-            setFacet("");
+            setFacet(""); */
 
             //Reset page number
             setPage(1);
