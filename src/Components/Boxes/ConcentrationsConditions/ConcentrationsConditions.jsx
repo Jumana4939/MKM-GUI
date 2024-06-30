@@ -3,7 +3,7 @@ import styles from "./ConcentrationsConditions.module.css";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
-import { InputReactionsContext } from "../../../App";
+import { InputReactionsContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
 
 function ConcentrationsConditions(){
 

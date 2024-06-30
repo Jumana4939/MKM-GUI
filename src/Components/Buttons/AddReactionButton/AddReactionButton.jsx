@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import styles from './AddReactionButton.module.css';
 import { ReactionsContext } from '../../Pages/SearchPage/SearchPage';
-import { InputReactionsContext } from '../../../App';
+import { InputReactionsContext } from '../../Pages/PageNavigationLogic/PageNavigationLogic';
 
 function AddReactionButton(){
 

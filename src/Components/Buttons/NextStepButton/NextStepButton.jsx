@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './NextStepButton.module.css';
 
-import { CurrentViewContext } from '../../../App';
+import { CurrentViewContext } from '../../Pages/PageNavigationLogic/PageNavigationLogic';
 
 function NextStepButton(){
 

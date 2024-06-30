@@ -2,7 +2,7 @@ import styles from './UpdateSelectionButton.module.css'
 import { useContext } from 'react';
 
 import { ActiveReactionsContext } from '../../Boxes/SelectedReactionBox/SelectedReactionBox';
-import { InputReactionsContext } from '../../../App';
+import { InputReactionsContext } from '../../Pages/PageNavigationLogic/PageNavigationLogic';
 
 function UpdateSelectionButton(){
 

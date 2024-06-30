@@ -53,11 +53,9 @@ function SearchResultsTable(){
 
 
      // Handle click on reaction equation to open details in new tab
-/*     const handleReactionDetails = (reaction) => (e) => {
-        e.preventDefault();
-        const reactionDetailsUrl = `/reaction-details/${reaction.id}`;
-        window.open(reactionDetailsUrl, "_blank");
-    }; */
+    const handleLinkClick = (reaction) => {
+        localStorage.setItem('reactionData', JSON.stringify(reaction));
+    };
 
     //HTML structure code
     return(
@@ -84,7 +82,7 @@ function SearchResultsTable(){
                             checked={selectedReactions.some(selectedR => selectedR.id === reaction.id)}/>
                         </td>
                         <td className={styles.rowReaction}>
-                            <Link to={`/reaction-details/${reaction.id}`} state={{reaction: "Hello World"}} 
+                            <Link to={`/reaction-details/${reaction.id}`} onClick={() => handleLinkClick(reaction)}
                             target="_blank" className={styles.reactionLink}>
                                 {reaction.Equation}
                             </Link>

@@ -1,8 +1,8 @@
 import React, {useState, useContext, useEffect}from "react";
 
 import styles from "./SelectedReactionsBox2.module.css";
-import { InputReactionsContext } from "../../../App";
-import { CurrentViewContext } from "../../../App";
+import { InputReactionsContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
+import { CurrentViewContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
 
 function SelectedReactionsBox2(){
 

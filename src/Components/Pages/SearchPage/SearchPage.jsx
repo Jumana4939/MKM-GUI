@@ -6,7 +6,7 @@ import Footer from "../../Footer/Footer";
 import styles from "./SearchPage.module.css"
 
 import { createContext, useState, useContext } from "react";
-import { InputReactionsContext } from "../../../App";
+import { InputReactionsContext } from "../PageNavigationLogic/PageNavigationLogic";
 
 export const ReactionsContext = createContext();
 

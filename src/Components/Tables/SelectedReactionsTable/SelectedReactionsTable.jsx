@@ -1,7 +1,7 @@
 import styles from "./SelectedReactionsTable.module.css"
 import { useContext, useEffect } from "react";
 import { ActiveReactionsContext } from "../../Boxes/SelectedReactionBox/SelectedReactionBox";
-import { InputReactionsContext } from "../../../App";
+import { InputReactionsContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
 
 function SelectedReactionsTable(){
 
