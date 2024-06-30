@@ -87,6 +87,7 @@ function SelectedReactionsBox2(){
                             <th className={styles.headerSurface}>Surface</th>
                             <th className={styles.headerActivationEnergy}>Activation Energy</th>
                             <th className={styles.headerReactionEnergy}>Reaction Energy</th>
+                            <th className={styles.headerReactionFacet}>Facet</th>
                         </tr>
                     </thead>
 
@@ -106,6 +107,7 @@ function SelectedReactionsBox2(){
                                 <td className={styles.rowReactionEnergy}>
                                     {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) : `NA`}
                                 </td>
+                                <td className={styles.rowFacet}>{reaction.facet}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -125,6 +127,7 @@ function SelectedReactionsBox2(){
                             <th className={styles.headerSurface}>Surface</th>
                             <th className={styles.headerActivationEnergy}>Activation Energy</th>
                             <th className={styles.headerReactionEnergy}>Reaction Energy</th>
+                            <th className={styles.headerReactionFacet}>Facet</th>
                         </tr>
                     </thead>
 
@@ -144,6 +147,7 @@ function SelectedReactionsBox2(){
                                 <td className={styles.rowReactionEnergy}>
                                     {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) : `NA`}
                                 </td>
+                                <td className={styles.rowFacet}>{reaction.facet}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -160,7 +164,7 @@ function SelectedReactionsBox2(){
                 </div>
             </div>
 
-            {/* Other buttons*/}
+            {/* Navigation/Other buttons*/}
             <div className={styles.otherButtons}>
                 <div>
                     <button onClick={handleBackButton} className={styles.backButton}>&#8592; Back to Search</button>
