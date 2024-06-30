@@ -167,5 +167,5 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .customIcon .swal2-icon {
     font-size: 0.7rem; /* Ensure the inner icon is also sized correctly */
-    color: hsl(9, 90%, 39%); 
+    color: #ff2600; 
   }
