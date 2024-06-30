@@ -102,10 +102,10 @@ function SelectedReactionsBox2(){
                                 <td className={styles.rowReaction}>{reaction.Equation}</td>
                                 <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
                                 <td className={styles.rowActivationEnergy}>
-                                    {reaction.activationEnergy ? reaction.activationEnergy.toFixed(2) : `NA`}
+                                    {reaction.activationEnergy ? reaction.activationEnergy.toFixed(2) + " eV" : `NA`}
                                 </td>
                                 <td className={styles.rowReactionEnergy}>
-                                    {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) : `NA`}
+                                    {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) + " eV" : `NA`}
                                 </td>
                                 <td className={styles.rowFacet}>{reaction.facet}</td>
                             </tr>
@@ -142,10 +142,10 @@ function SelectedReactionsBox2(){
                                 <td className={styles.rowReaction}>{reaction.Equation}</td>
                                 <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
                                 <td className={styles.rowActivationEnergy}>
-                                    {reaction.activationEnergy ? reaction.activationEnergy.toFixed(2) : `NA`}
+                                    {reaction.activationEnergy ? reaction.activationEnergy.toFixed(2) + " eV" : `NA`}
                                 </td>
                                 <td className={styles.rowReactionEnergy}>
-                                    {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) : `NA`}
+                                    {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) + " eV" : `NA`}
                                 </td>
                                 <td className={styles.rowFacet}>{reaction.facet}</td>
                             </tr>
