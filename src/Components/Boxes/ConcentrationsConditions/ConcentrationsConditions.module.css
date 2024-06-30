@@ -145,3 +145,27 @@ input[type="number"]::-webkit-inner-spin-button {
 .runButton:hover{
     background-color: hsl(120, 90%, 30%);
 }
+
+/* ------------------------------------------------------------------------- */
+/* Warning popup window styling */
+.customPopup {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem; 
+    color: hsl(0, 0%, 0%); 
+}
+
+.customTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem; /* Change the font size of the title */
+    color: hsl(9, 90%, 39%); /* Change the color of the title */
+}
+
+.customIcon {
+    font-size: 0.7rem; /* Change the size of the icon */
+    color: hsl(9, 90%, 39%); 
+}
+
+.customIcon .swal2-icon {
+    font-size: 0.7rem; /* Ensure the inner icon is also sized correctly */
+    color: hsl(9, 90%, 39%); 
+  }

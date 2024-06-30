@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useContext} from "react";
 import styles from "./ConcentrationsConditions.module.css";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import { InputReactionsContext } from "../../../App";
 
 function ConcentrationsConditions(){
+
+    const MySwal = withReactContent(Swal); 
 
     const {
         inputReactions, 
@@ -65,7 +69,6 @@ function ConcentrationsConditions(){
         reactionEquations.forEach(equation => {
             let matches;
             while ((matches = pattern.exec(equation)) != null) {
-                console.log("INSIDE WHILE LOOP");
                 uniqueConcentractions.add(matches[1]);
             }
         });
@@ -187,33 +190,99 @@ function ConcentrationsConditions(){
 
     // Connect to backend to generate Input_SAC.mkm file and download
     const handleGenerateFileButton = async () => {
-        const userInputs = createUserInput();
+        if(noneEmptySanityCheck() && codeSanityCheck() && surfaceSanityCheck()){
+            const userInputs = createUserInput();
 
-        try {
-            const response = await fetch('http://127.0.0.1:5000/generate-input-file', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(userInputs),
-            });
-        
-            if (response.ok) {
-              const blob = await response.blob();
-              const url = window.URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              a.href = url;
-              a.download = 'Input_SAC.mkm';
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
-            } else {
-              console.error('Failed to generate file', response.statusText);
+            try {
+                const response = await fetch('http://127.0.0.1:5000/generate-input-file', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(userInputs),
+                });
+            
+                if (response.ok) {
+                  const blob = await response.blob();
+                  const url = window.URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = 'Input_SAC.mkm';
+                  document.body.appendChild(a);
+                  a.click();
+                  a.remove();
+                } else {
+                  console.error('Failed to generate file', response.statusText);
+                }
+              } catch (error) {
+                console.error('Error:', error);
             }
-          } catch (error) {
-            console.error('Error:', error);
+        } else {
+            if(noneEmptySanityCheck()){
+                const surfaceMsg = surfaceSanityCheck() ? "" : "* All reactions must have the same surface<br>";
+                const codeMsg = codeSanityCheck() ? "" : "* All reactions must use the same dft code<br>";
+                MySwal.fire({
+                    title: "Warning",
+                    html: surfaceMsg + codeMsg,
+                    icon: 'warning',
+                    iconColor: '#D82000',
+                    confirmButtonText: 'Close',
+                    confirmButtonColor: '#3085d6',
+                    customClass: {
+                    popup: styles.customPopup,
+                    title: styles.customTitle,
+                    icon: styles.customIcon
+                    }
+                });
+            } else {
+                const emptyMsg = "* No reactions currently selected<br>";
+                MySwal.fire({
+                    title: "Warning",
+                    html: emptyMsg,
+                    icon: 'warning',
+                    iconColor: '#D82000',
+                    confirmButtonText: 'Close',
+                    confirmButtonColor: '#3085d6',
+                    customClass: {
+                    popup: styles.customPopup,
+                    title: styles.customTitle,
+                    icon: styles.customIcon
+                    }
+                });
+            }
         }
+        
     };
+
+    // Sanity checks functions
+    function codeSanityCheck(){
+        const firstCode = inputReactions[0].dftCode;
+        for (let i = 1; i < inputReactions.length; i++) {
+            if (inputReactions[i].dftCode !== firstCode) {
+              return false;
+            }
+          }
+        
+        return true;
+    }
+
+    function surfaceSanityCheck(){
+        const firstSurface = inputReactions[0].surfaceComposition;
+        for (let i = 1; i < inputReactions.length; i++) {
+            if (inputReactions[i].surfaceComposition !== firstSurface) {
+              return false;
+            }
+          }
+        
+        return true;
+    }
+
+    function noneEmptySanityCheck(){
+        if (inputReactions.length === 0) {
+            return false;
+          }
+        return true;
+    }
 
     return(
         <>
