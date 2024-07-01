@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import { CurrentBoxContext } from "../../Pages/ParametersPage/ParametersPage";
 import { InputReactionsContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
@@ -17,16 +17,28 @@ function EditEnergyValuesBox(){
         setCurrentBox
     } = useContext(CurrentBoxContext);
 
+    // Create a local state to hold the edited values
+    const [editedReactions, setEditedReactions] = useState(inputReactions);
+
     function handleBackButton(){
         setCurrentBox("selectBox");
     }
 
     function handleResetButton(){
-        return(null);
+        setEditedReactions(inputReactions);
     }
 
     function handleSaveButton(){
-        return(null); 
+        setInputReaction(editedReactions); 
+    }
+
+    // Handle change in input fields
+    function handleInputChange(id, field, value) {
+        setEditedReactions(prevReactions => 
+            prevReactions.map(reaction => 
+                reaction.id === id ? { ...reaction, [field]: parseFloat(value) } : reaction
+            )
+        );
     }
 
     return(
@@ -42,23 +54,30 @@ function EditEnergyValuesBox(){
                         <tr>
                             <th className={styles.headerReaction}>Reaction</th>
                             <th className={styles.headerSurface}>Surface</th>
-                            <th className={styles.headerActivationEnergy}>Activation Energy</th>
-                            <th className={styles.headerReactionEnergy}>Reaction Energy</th>
+                            <th className={styles.headerActivationEnergy}>Activation Energy (eV)</th>
+                            <th className={styles.headerReactionEnergy}>Reaction Energy (eV)</th>
                             <th className={styles.headerReactionFacet}>Facet</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        {inputReactions.map((reaction) => (
+                        {editedReactions.map((reaction) => (
                             <tr key={reaction.id} className={`${styles.rows} ${reaction.dataSource === "AiScia" ? styles.aiSciaData: ""}`}>
                                 <td className={styles.rowReaction}>{reaction.Equation}</td>
                                 <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
+
                                 <td className={styles.rowActivationEnergy}>
-                                    {reaction.activationEnergy ? reaction.activationEnergy.toFixed(2) + " eV" : `NA`}
+                                    <input type="number" value={reaction.activationEnergy || ""}
+                                        className={styles.inputBox}
+                                        onChange={(e) => handleInputChange(reaction.id, 'activationEnergy', e.target.value)}/>
                                 </td>
+
                                 <td className={styles.rowReactionEnergy}>
-                                    {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) + " eV" : `NA`}
+                                    <input type="number" value={reaction.reactionEnergy || ""}
+                                        className={styles.inputBox}
+                                        onChange={(e) => handleInputChange(reaction.id, 'reactionEnergy', e.target.value)}/>
                                 </td>
+
                                 <td className={styles.rowFacet}>{reaction.facet}</td>
                             </tr>
                         ))}

@@ -59,6 +59,18 @@
     text-align: center;
 }
 
+.inputBox{
+    width: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    border: 3px solid rgb(133, 133, 133);
+}
+
+.inputBox:hover{
+    outline: none;
+    border: 3px solid rgb(70, 70, 70);
+}
+
 /* ------------------------------------------------------------------------- */
 /* Button styling */
 .tableButtons{
@@ -100,3 +112,4 @@
 .backButton:hover{
     background-color: hsl(0, 0%, 65%);
 }
+
