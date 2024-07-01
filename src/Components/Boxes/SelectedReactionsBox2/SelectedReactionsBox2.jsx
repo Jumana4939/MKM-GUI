@@ -3,6 +3,7 @@ import React, {useState, useContext, useEffect}from "react";
 import styles from "./SelectedReactionsBox2.module.css";
 import { InputReactionsContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
 import { CurrentViewContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
+import { CurrentBoxContext } from "../../Pages/ParametersPage/ParametersPage";
 
 function SelectedReactionsBox2(){
 
@@ -15,9 +16,16 @@ function SelectedReactionsBox2(){
         setInputReaction
     } = useContext(InputReactionsContext);
 
+    //For paramter page and search page switching 
     const {
         currentView, setCurrentView
     } = useContext(CurrentViewContext);
+
+    //For current box and edit energy page switching
+    const {
+        currentBox, 
+        setCurrentBox
+    } = useContext(CurrentBoxContext);
 
     function handleCheckboxChangeInSelected(reaction) {
         const isSelected = activeSelection.some(selectedR => selectedR.id === reaction.id);
@@ -68,6 +76,10 @@ function SelectedReactionsBox2(){
 
     function handleBackButton(){
         setCurrentView("searchPage");
+    }
+
+    function handleEditButton(){
+        setCurrentBox("editBox");
     }
 
 
@@ -170,7 +182,7 @@ function SelectedReactionsBox2(){
                     <button onClick={handleBackButton} className={styles.backButton}>&#8592; Back to Search</button>
                 </div>
                 <div>
-                    <button className={styles.editButton}>Edit Energy Values</button>
+                    <button onClick={handleEditButton} className={styles.editButton}>Edit Energy Values</button>
                 </div>
             </div>
 

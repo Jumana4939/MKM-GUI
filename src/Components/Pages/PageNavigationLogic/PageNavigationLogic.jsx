@@ -20,9 +20,9 @@ function PageNavigationLogic(){
       setInputReaction
     };
   
-    useEffect(()=>{
+/*     useEffect(()=>{
       console.log("inputReactions: ",inputReactions);
-    },[])
+    },[]) */
   
     useEffect(() => {
       handleWindowView();
