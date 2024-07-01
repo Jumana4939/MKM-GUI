@@ -4,7 +4,6 @@
 
 .bodyContainer{
     text-align: center;
-    justify-content: center;
     background-color: rgb(215, 215, 215);
     color: black;
     padding: 25px;
@@ -20,13 +19,24 @@
 }
 
 .dataContainer{
-    width: 50%;
-}
-
-.dataBox{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.3rem;
+}
+
+.label{
+    font-weight: bold;
     text-align: left;
-    display: flex;
-    
+}
+
+.data{
+    text-align: left;
+}
+
+.table{
+    border-collapse: separate;
+    border-spacing: 100px 15px;
+}
+
+.table td{
+    padding: 15px;
 }

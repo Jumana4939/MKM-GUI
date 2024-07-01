@@ -45,56 +45,66 @@ function ReactionDetailsPage(){
         <div className={styles.bodyContainer}>
             <h1 className={styles.title}>Reaction Details</h1>
             <br /><br />
+
             <div className={styles.dataContainer}>
-                <div className={styles.dataBox}>
-                    <p>Equation: </p>
-                    <p>{reaction.Equation}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>ID: </p>
-                    <p>{reaction.id}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>Reaction Energy: </p>
-                    <p>{reaction.reactionEnergy}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>Activation Energy: </p>
-                    <p>{reaction.activationEnergy}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>Surface Composition: </p>
-                    <p>{reaction.surfaceComposition}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>Facet: </p>
-                    <p>{reaction.facet}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>DFT Code: </p>
-                    <p>{reaction.dftCode}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>Molecular Weight: </p>
-                    <p>{parsedMolecularData[dynamicKey].molecularWeight}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>Symmetry: </p>
-                    <p>{parsedMolecularData[dynamicKey].symmetrySigma}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>Rotational Constant: </p>
-                    <p>{parsedMolecularData[dynamicKey].rotationalConstant}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>Data Source: </p>
-                    <p>{reaction.dataSource}</p>
-                </div>
-                <div className={styles.dataBox}>
-                    <p>pubID: </p>
-                    <p>{reaction.pubId}</p>
-                </div>
+                <table className={styles.table}>
+                    <tbody>
+                        <tr>
+                            <td className={styles.label}>Equation: </td>
+                            <td className={styles.data}>{reaction.Equation}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>ID: </td>
+                            <td className={styles.data}>{reaction.id}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>Reaction Energy: </td>
+                            <td className={styles.data}>
+                                {reaction.reactionEnergy ? reaction.reactionEnergy.toFixed(2) + " eV" : `N/A`}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>Activation Energy: </td>
+                            <td className={styles.data}>
+                                {reaction.activationEnergy ? reaction.activationEnergy.toFixed(2) + " eV" : `N/A`}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>Surface Composition: </td>
+                            <td className={styles.data}>{reaction.surfaceComposition}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>Facet: </td>
+                            <td className={styles.data}>{reaction.facet}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>DFT Code: </td>
+                            <td className={styles.data}>{reaction.dftCode}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>Molecular Weight: </td>
+                            <td className={styles.data}>{parsedMolecularData[dynamicKey].molecularWeight}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>Symmetry: </td>
+                            <td className={styles.data}>{parsedMolecularData[dynamicKey].symmetrySigma}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>Rotational Constant: </td>
+                            <td className={styles.data}>{parsedMolecularData[dynamicKey].rotationalConstant}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>Data Source: </td>
+                            <td className={styles.data}>{reaction.dataSource}</td>
+                        </tr>
+                        <tr>
+                            <td className={styles.label}>pubID: </td>
+                            <td className={styles.data}>{reaction.pubId}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
         </div>
         <Footer></Footer>
     </div>
