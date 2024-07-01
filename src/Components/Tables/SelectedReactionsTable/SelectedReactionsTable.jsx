@@ -28,9 +28,9 @@ function SelectedReactionsTable(){
         }
     }
 
-    useEffect(()=>{
+/*     useEffect(()=>{
         console.log("ActiveSelection", activeSelection);
-    }, [activeSelection])
+    }, [activeSelection]) */
 
     return(
         <div className={styles.container}>

@@ -59,7 +59,7 @@ function ConcentrationsConditions(){
             reactionEquations.push(formatEquation(reaction['Equation']))
         });
 
-        console.log("equations: ", reactionEquations);
+        //console.log("equations: ", reactionEquations);
 
         const uniqueConcentractions = new Set();
 
@@ -184,7 +184,7 @@ function ConcentrationsConditions(){
         },
         "pressure": pressure.toString()};
 
-        console.log("userInputs:",userInputs);
+        //console.log("userInputs:",userInputs);
         return(userInputs);
     }
 

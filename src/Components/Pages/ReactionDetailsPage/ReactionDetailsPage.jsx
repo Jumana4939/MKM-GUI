@@ -11,7 +11,7 @@ function ReactionDetailsPage(){
 
     useEffect(() => {
         const reactionData = localStorage.getItem('reactionData');
-        console.log(reactionData);
+        //console.log(reactionData);
         if (reactionData) {
           setReaction(JSON.parse(reactionData));
         }

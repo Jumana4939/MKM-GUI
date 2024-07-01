@@ -42,9 +42,9 @@ function SearchButton(){
         queryDataPageChange();
     }, [page]);
 
-    useEffect(() => {
+/*     useEffect(() => {
         console.log("ReactionDB: ", reactionsDB);
-    }, [reactionsDB])
+    }, [reactionsDB]) */
 
     const queryData = async () => {
         try {
@@ -72,7 +72,7 @@ function SearchButton(){
 
             const totalCountJson = await totalCountResponse.json();
             const totalCount = totalCountJson.totalCount;
-            console.log("TOTAL COUNT: ", totalCount);
+            //console.log("TOTAL COUNT: ", totalCount);
 
             // Calculate total pages based on total items and pagination limit
             const totalPages = Math.ceil(totalCount / 50);

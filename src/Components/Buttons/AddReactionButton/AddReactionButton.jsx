@@ -21,7 +21,7 @@ function AddReactionButton(){
 
         const uniqueReactions = selectedReactions.filter(reaction => {
             if (inputReactions.some(item => item.id === reaction.id)){
-                console.log(`Dulplicate object with id ${reaction.id} found.`);
+                //console.log(`Dulplicate object with id ${reaction.id} found.`);
                 return false; 
             } else {
                 return true; 
@@ -32,9 +32,9 @@ function AddReactionButton(){
         setSelectedReactions(s => []);
     };
 
-    useEffect(() => {
+    /* useEffect(() => {
         console.log("Current Reactions", inputReactions);
-    }, [inputReactions])
+    }, [inputReactions]) */
 
 
     return(
