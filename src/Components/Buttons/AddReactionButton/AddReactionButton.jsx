@@ -7,9 +7,7 @@ function AddReactionButton(){
 
     const {
         selectedReactions,
-        setSelectedReactions, 
-        currentReactions, 
-        setCurrentReaction
+        setSelectedReactions
     } = useContext(ReactionsContext);
 
     const {

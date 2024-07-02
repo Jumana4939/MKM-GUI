@@ -6,23 +6,16 @@ import Footer from "../../Footer/Footer";
 import styles from "./SearchPage.module.css"
 
 import { createContext, useState, useContext } from "react";
-import { InputReactionsContext } from "../PageNavigationLogic/PageNavigationLogic";
 
 export const ReactionsContext = createContext();
 
 function SearchPage(){
 
     const [selectedReactions, setSelectedReactions] = useState([]);
-    const {
-        currentReactions, setCurrentReaction
-    } = useContext(InputReactionsContext); 
-    //const [currentReactions, setCurrentReaction] = useState([]);
 
     const contextValue = {
         selectedReactions,
-        setSelectedReactions, 
-        currentReactions, 
-        setCurrentReaction
+        setSelectedReactions
     };
 
     return(

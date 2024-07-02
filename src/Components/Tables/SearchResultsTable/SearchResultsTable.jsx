@@ -11,9 +11,7 @@ function SearchResultsTable(){
     //importing data from other components 
     const {
         selectedReactions,
-        setSelectedReactions, 
-        _, 
-        __
+        setSelectedReactions
     } = useContext(ReactionsContext);
 
     const {
