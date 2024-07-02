@@ -3,6 +3,8 @@ import { useContext, useEffect } from "react";
 import { ActiveReactionsContext } from "../../Boxes/SelectedReactionBox/SelectedReactionBox";
 import { InputReactionsContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
 
+import { Link } from "react-router-dom";
+
 function SelectedReactionsTable(){
 
     const {
@@ -32,6 +34,14 @@ function SelectedReactionsTable(){
         console.log("ActiveSelection", activeSelection);
     }, [activeSelection]) */
 
+    // Handle click on reaction equation to open details in new tab
+    const handleLinkClick = (event, reaction) => {
+        // Check if the middle mouse button or right mouse button was pressed
+        if (event.button === 1 || event.button === 2) {
+            localStorage.setItem(reaction.id.toString(), JSON.stringify(reaction));
+        }
+    };
+
     return(
         <div className={styles.container}>
             <table className={styles.table}>
@@ -51,7 +61,12 @@ function SelectedReactionsTable(){
                                         defaultChecked={true}
                                         onChange={() => handleCheckboxChange(reaction)}/>
                             </td>
-                            <td className={styles.rowReaction}>{reaction.Equation}</td>
+                            <td className={styles.rowReaction}>
+                                <Link to={`/reaction-details/${reaction.id}`} onMouseDown={(e) => handleLinkClick(e, reaction)}
+                                target="_blank" className={styles.reactionLink}>
+                                    {reaction.Equation}
+                                </Link>
+                            </td>
                             <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
                         </tr>
                     ))}

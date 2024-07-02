@@ -52,9 +52,12 @@ function SearchResultsTable(){
     };
 
 
-     // Handle click on reaction equation to open details in new tab
-    const handleLinkClick = (reaction) => {
-        localStorage.setItem('reactionData', JSON.stringify(reaction));
+    // Handle click on reaction equation to open details in new tab
+    const handleLinkClick = (event, reaction) => {
+        // Check if the middle mouse button or right mouse button was pressed
+        if (event.button === 1 || event.button === 2) {
+            localStorage.setItem(reaction.id.toString(), JSON.stringify(reaction));
+        }
     };
 
     //HTML structure code
@@ -82,7 +85,7 @@ function SearchResultsTable(){
                             checked={selectedReactions.some(selectedR => selectedR.id === reaction.id)}/>
                         </td>
                         <td className={styles.rowReaction}>
-                            <Link to={`/reaction-details/${reaction.id}`} onClick={() => handleLinkClick(reaction)}
+                            <Link to={`/reaction-details/${reaction.id}`} onMouseDown={(e) => handleLinkClick(e, reaction)}
                             target="_blank" className={styles.reactionLink}>
                                 {reaction.Equation}
                             </Link>

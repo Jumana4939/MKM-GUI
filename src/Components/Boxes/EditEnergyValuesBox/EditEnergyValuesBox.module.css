@@ -71,6 +71,11 @@
     border: 3px solid rgb(70, 70, 70);
 }
 
+.reactionLink{
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Keeps the text color */
+}
+
 /* ------------------------------------------------------------------------- */
 /* Button styling */
 .tableButtons{

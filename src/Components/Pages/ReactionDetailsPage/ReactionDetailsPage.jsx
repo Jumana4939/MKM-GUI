@@ -10,8 +10,7 @@ function ReactionDetailsPage(){
     const [reaction, setReaction] = useState(null);
 
     useEffect(() => {
-        const reactionData = localStorage.getItem('reactionData');
-        //console.log(reactionData);
+        const reactionData = localStorage.getItem(id.toString());
         if (reactionData) {
           setReaction(JSON.parse(reactionData));
         }
@@ -36,7 +35,13 @@ function ReactionDetailsPage(){
     const formattedReaction = JSON.stringify(reaction, null, 2);
 
     const parsedMolecularData = JSON.parse(reaction.molecularData);
-    const dynamicKey = Object.keys(parsedMolecularData)[0];
+
+    let dynamicKey;
+    if (Object.keys(parsedMolecularData).length > 0) {
+        dynamicKey = Object.keys(parsedMolecularData)[0];
+    } else {
+        dynamicKey = null;
+    }
 
     return(
     <>
@@ -83,15 +88,21 @@ function ReactionDetailsPage(){
                         </tr>
                         <tr>
                             <td className={styles.label}>Molecular Weight: </td>
-                            <td className={styles.data}>{parsedMolecularData[dynamicKey].molecularWeight}</td>
+                            <td className={styles.data}>
+                                {dynamicKey ? parsedMolecularData[dynamicKey].molecularWeight : `N/A`}  
+                            </td>
                         </tr>
                         <tr>
                             <td className={styles.label}>Symmetry: </td>
-                            <td className={styles.data}>{parsedMolecularData[dynamicKey].symmetrySigma}</td>
+                            <td className={styles.data}>
+                                {dynamicKey ? parsedMolecularData[dynamicKey].symmetrySigma : `N/A`}  
+                            </td>
                         </tr>
                         <tr>
                             <td className={styles.label}>Rotational Constant: </td>
-                            <td className={styles.data}>{parsedMolecularData[dynamicKey].rotationalConstant}</td>
+                            <td className={styles.data}>
+                                {dynamicKey ? parsedMolecularData[dynamicKey].rotationalConstant : `N/A`}  
+                            </td>
                         </tr>
                         <tr>
                             <td className={styles.label}>Data Source: </td>

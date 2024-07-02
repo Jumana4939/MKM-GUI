@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 
 import { CurrentBoxContext } from "../../Pages/ParametersPage/ParametersPage";
 import { InputReactionsContext } from "../../Pages/PageNavigationLogic/PageNavigationLogic";
@@ -41,6 +42,14 @@ function EditEnergyValuesBox(){
         );
     }
 
+    // Handle click on reaction equation to open details in new tab
+    const handleLinkClick = (event, reaction) => {
+        // Check if the middle mouse button or right mouse button was pressed
+        if (event.button === 1 || event.button === 2) {
+            localStorage.setItem(reaction.id.toString(), JSON.stringify(reaction));
+        }
+    };
+
     return(
         <>
         <div className={styles.container}>
@@ -63,7 +72,12 @@ function EditEnergyValuesBox(){
                     <tbody>
                         {editedReactions.map((reaction) => (
                             <tr key={reaction.id} className={`${styles.rows} ${reaction.dataSource === "AiScia" ? styles.aiSciaData: ""}`}>
-                                <td className={styles.rowReaction}>{reaction.Equation}</td>
+                                <td className={styles.rowReaction}>
+                                    <Link to={`/reaction-details/${reaction.id}`} onMouseDown={(e) => handleLinkClick(e, reaction)}
+                                    target="_blank" className={styles.reactionLink}>
+                                        {reaction.Equation}
+                                    </Link>
+                                </td>
                                 <td className={styles.rowSurface}>{reaction.surfaceComposition}</td>
 
                                 <td className={styles.rowActivationEnergy}>

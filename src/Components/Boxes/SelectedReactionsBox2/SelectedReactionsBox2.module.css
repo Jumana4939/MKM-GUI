@@ -125,3 +125,8 @@
 .editButton:hover{
     background-color: hsl(0, 0%, 45%);
 }
+
+.reactionLink{
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Keeps the text color */
+}

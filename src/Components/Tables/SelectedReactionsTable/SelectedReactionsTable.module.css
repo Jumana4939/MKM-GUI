@@ -52,3 +52,8 @@
 .rowSelect{
     transform: scale(1.25);
 }
+
+.reactionLink{
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Keeps the text color */
+}
