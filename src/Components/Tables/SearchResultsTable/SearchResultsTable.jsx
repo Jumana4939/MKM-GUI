@@ -53,7 +53,7 @@ function SearchResultsTable(){
     // Handle click on reaction equation to open details in new tab
     const handleLinkClick = (event, reaction) => {
         // Check if the middle mouse button or right mouse button was pressed
-        if (event.button === 1 || event.button === 2) {
+        if (event.button === 0 || event.button === 1) {
             localStorage.setItem(reaction.id.toString(), JSON.stringify(reaction));
         }
     };
